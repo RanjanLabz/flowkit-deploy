@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Clean up old lock files
+rm -f /tmp/.X99-lock /tmp/.X11-unix/X99
+
 # Start Xvfb (virtual display)
 Xvfb :99 -screen 0 1920x1080x24 -ac &
 export DISPLAY=:99

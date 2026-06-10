@@ -23,10 +23,11 @@ class QueueManager:
     async def connect(self) -> None:
         if not self.redis_url or self.redis_url.startswith("${"):
             raise RuntimeError("REDIS_URL is required for the worker queue")
+        import ssl
         kwargs = {"decode_responses": True}
         if self.redis_url.startswith("rediss://"):
             kwargs["ssl"] = True
-            kwargs["ssl_cert_reqs"] = None
+            kwargs["ssl_cert_reqs"] = ssl.CERT_NONE
         self.redis = Redis.from_url(self.redis_url, **kwargs)
         await self.redis.ping()
 
