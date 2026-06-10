@@ -22,22 +22,22 @@ RUN git clone https://github.com/novnc/noVNC.git /opt/noVNC \
     && git clone https://github.com/novnc/websockify.git /opt/noVNC/utils/websockify
 
 # Install Python deps
-COPY requirements.txt .
+COPY worker-only/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy nginx config
-COPY nginx-render.conf /etc/nginx/nginx.conf
+COPY worker-only/nginx-render.conf /etc/nginx/nginx.conf
 
 # Copy extension + worker + config
-COPY extension/ /extension/
-COPY worker/ /worker/
-COPY config/ /worker/config/
+COPY worker-only/extension/ /extension/
+COPY worker-only/worker/ /worker/
+COPY worker-only/config/ /worker/config/
 
 # Create dirs
 RUN mkdir -p /chrome-profiles /worker/accounts /worker/logs
 
-# Start nginx + worker + noVNC
-COPY start.sh /start.sh
+# Start script
+COPY worker-only/start.sh /start.sh
 RUN chmod +x /start.sh
 
 EXPOSE 8080
