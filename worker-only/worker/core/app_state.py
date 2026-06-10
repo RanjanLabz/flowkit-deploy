@@ -6,8 +6,8 @@ from worker.accounts.manager import AccountManager
 from worker.config.flow_settings import FlowConfigManager
 from worker.config.settings import Settings
 from worker.health.reporter import HealthReporter
-from worker.queue.manager import QueueManager
-from worker.queue.scheduler import Scheduler
+from worker.job_queue.manager import QueueManager
+from worker.job_queue.scheduler import Scheduler
 
 
 @dataclass(slots=True)

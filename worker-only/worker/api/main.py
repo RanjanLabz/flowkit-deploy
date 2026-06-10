@@ -18,8 +18,8 @@ from worker.config.settings import Settings, load_settings
 from worker.core.app_state import AppState
 from worker.core.logging_config import configure_logging
 from worker.health.reporter import HealthReporter
-from worker.queue.manager import QueueManager
-from worker.queue.scheduler import Scheduler
+from worker.job_queue.manager import QueueManager
+from worker.job_queue.scheduler import Scheduler
 from worker.storage.account_store import AccountStore
 
 

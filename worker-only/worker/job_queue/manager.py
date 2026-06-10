@@ -6,7 +6,7 @@ import time
 from redis.asyncio import Redis
 
 from worker.config.settings import QueueSettings
-from worker.queue.models import Job, JobState
+from worker.job_queue.models import Job, JobState
 
 
 class QueueManager:

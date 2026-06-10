@@ -7,9 +7,9 @@ from datetime import datetime, timezone
 from worker.accounts.manager import AccountManager
 from worker.accounts.models import Account, AccountStatus
 from worker.config.settings import Settings
-from worker.queue.executor import JobExecutor, LoginRequiredError
-from worker.queue.manager import QueueManager
-from worker.queue.models import Job, JobState
+from worker.job_queue.executor import JobExecutor, LoginRequiredError
+from worker.job_queue.manager import QueueManager
+from worker.job_queue.models import Job, JobState
 
 logger = logging.getLogger(__name__)
 

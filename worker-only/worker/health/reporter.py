@@ -10,7 +10,7 @@ import psutil
 from worker.accounts.manager import AccountManager
 from worker.accounts.models import AccountStatus
 from worker.config.settings import Settings
-from worker.queue.manager import QueueManager
+from worker.job_queue.manager import QueueManager
 
 
 class HealthReporter:

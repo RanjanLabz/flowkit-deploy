@@ -11,7 +11,7 @@ from worker.accounts.manager import AccountManager
 from worker.accounts.models import Account, AccountStatus
 from worker.browser.flowkit_requests import create_project_request, generate_image_request, generate_video_request, get_media_request
 from worker.config.settings import Settings
-from worker.queue.models import Job, JobState
+from worker.job_queue.models import Job, JobState
 
 logger = logging.getLogger(__name__)
 
