@@ -1,0 +1,14 @@
+﻿# ── Required ────────────────────────────────────────────────────
+ssh_key_name = "your-key-pair-name"
+redis_url    = "redis://default:your-password@your-redis-host:6379"
+
+# ── Optional ────────────────────────────────────────────────────
+aws_region          = "us-east-1"
+instance_type       = "t3.medium"
+worker_id           = "aws-worker-1"
+orchestrator_url    = ""
+orchestrator_api_key = ""
+vnc_password        = ""
+ssh_allowed_cidr    = "YOUR_IP/32"
+api_allowed_cidr    = "0.0.0.0/0"
+vnc_allowed_cidr    = ""

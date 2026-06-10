@@ -1,0 +1,10 @@
+﻿# Required
+gcp_project_id = "your-gcp-project-id"
+
+# Optional
+gcp_region       = "us-central1"
+machine_type     = "e2-standard-2"
+worker_id        = "gcp-worker-1"
+redis_url        = "redis://default:password@host:6379"
+orchestrator_url = ""
+ssh_allowed_cidr = "YOUR_IP/32"

@@ -1,0 +1,70 @@
+﻿services:
+  # ── Orchestrator ──────────────────────────────────────────────
+  - type: web
+    name: flowkit-orchestrator
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./docker/orchestrator.Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ORCHESTRATOR_CONFIG
+        value: /orchestrator/config/orchestrator.yaml
+      - key: ORCHESTRATOR_LOGS_DIR
+        value: /tmp/orchestrator/logs
+      - key: ORCHESTRATOR_ALLOW_PUBLIC_HEALTH
+        value: "true"
+      - key: ORCHESTRATOR_ALLOW_PUBLIC_DOCS
+        value: "false"
+      - key: ORCHESTRATOR_RATE_LIMIT_PER_MINUTE
+        value: "30"
+      - key: MONGODB_DATABASE
+        value: flowkit_orchestrator
+      - key: ORCHESTRATOR_REDIS_URL
+        sync: false
+      - key: ORCHESTRATOR_API_KEY
+        sync: false
+      - key: WORKER_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: R2_ENDPOINT_URL
+        sync: false
+      - key: R2_BUCKET
+        value: flowkit-generated-media
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_PUBLIC_BASE_URL
+        sync: false
+
+  # ── Worker (with nginx multiplexing API + VNC on one port) ────
+  - type: web
+    name: flowkit-worker
+    runtime: docker
+    plan: standard
+    dockerfilePath: ./docker/render-worker.Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: REDIS_URL
+        sync: false
+      - key: WORKER_API_KEY
+        sync: false
+      - key: WORKER_ALLOW_PUBLIC_HEALTH
+        value: "true"
+      - key: WORKER_ALLOW_PUBLIC_DOCS
+        value: "false"
+      - key: WORKER_ID
+        value: render-worker-1
+      - key: VNC_PASSWORD
+        sync: false
+      - key: WORKER_EXTENSION_DIR
+        value: /extension
+      - key: WORKER_ACCOUNTS_DIR
+        value: /worker/accounts
+      - key: WORKER_LOGS_DIR
+        value: /worker/logs
+      - key: WORKER_CHROME_PROFILES_DIR
+        value: /chrome-profiles

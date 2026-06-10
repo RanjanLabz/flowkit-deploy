@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: flowkit-worker
+    runtime: docker
+    plan: standard
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: REDIS_URL
+        sync: false
+      - key: WORKER_API_KEY
+        sync: false
+      - key: WORKER_ALLOW_PUBLIC_HEALTH
+        value: "true"
+      - key: WORKER_ALLOW_PUBLIC_DOCS
+        value: "false"
+      - key: WORKER_ID
+        value: render-worker-1
+      - key: VNC_PASSWORD
+        sync: false
+      - key: WORKER_EXTENSION_DIR
+        value: /extension
+      - key: WORKER_ACCOUNTS_DIR
+        value: /worker/accounts
+      - key: WORKER_LOGS_DIR
+        value: /worker/logs
+      - key: WORKER_CHROME_PROFILES_DIR
+        value: /chrome-profiles
