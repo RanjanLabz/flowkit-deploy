@@ -14,9 +14,20 @@ IS_WINDOWS = sys.platform == "win32"
 class VncManager:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
+        self._global_mode = os.getenv("VNC_GLOBAL", "").lower() in {"1", "true", "yes"}
+        self._global_display = os.getenv("DISPLAY", ":99")
 
     async def start(self, account: Account, runtime: AccountRuntime) -> None:
         if IS_WINDOWS:
+            return
+
+        if self._global_mode:
+            display = self._global_display
+            vnc_port = 5900
+            novnc_port = 6080
+            account.display = display
+            account.vnc_port = vnc_port
+            account.mark_updated()
             return
 
         display_number = self._display_number(account)
@@ -72,6 +83,8 @@ class VncManager:
         )
 
     def novnc_port_for(self, account: Account) -> int:
+        if self._global_mode:
+            return 6080
         return self.settings.vnc.novnc_start_port + self._numeric_suffix(account.id)
 
     def _display_number(self, account: Account) -> int:
