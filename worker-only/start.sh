@@ -24,10 +24,6 @@ PORT=${PORT:-10000}
 sed -i "s/listen 80;/listen $PORT;/" /etc/nginx/nginx.conf
 nginx &
 
-# Start noVNC (websockify)
-cd /opt/noVNC
-./utils/novnc_proxy --vnc localhost:5900 --listen 6080 &
-
 # Start worker with global VNC mode (skip per-account Xvfb/x11vnc/noVNC)
 export PYTHONPATH=/worker
 export VNC_GLOBAL=1
