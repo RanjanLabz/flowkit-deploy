@@ -27,3 +27,5 @@ services:
         value: /worker/logs
       - key: WORKER_CHROME_PROFILES_DIR
         value: /chrome-profiles
+      - key: VNC_GLOBAL
+        value: "1"
