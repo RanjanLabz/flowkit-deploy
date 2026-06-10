@@ -23,25 +23,7 @@ class QueueManager:
     async def connect(self) -> None:
         if not self.redis_url or self.redis_url.startswith("${"):
             raise RuntimeError("REDIS_URL is required for the worker queue")
-        import ssl
-        from urllib.parse import urlparse
-        parsed = urlparse(self.redis_url)
-        use_ssl = self.redis_url.startswith("rediss://")
-        password = parsed.password or ""
-        from urllib.parse import unquote
-        password = unquote(password)
-        conn_kwargs = {
-            "host": parsed.hostname,
-            "port": parsed.port or 6379,
-            "password": password,
-            "decode_responses": True,
-        }
-        if use_ssl:
-            ctx = ssl.create_default_context()
-            ctx.check_hostname = False
-            ctx.verify_mode = ssl.CERT_NONE
-            conn_kwargs["ssl_context"] = ctx
-        self.redis = Redis(**conn_kwargs)
+        self.redis = Redis.from_url(self.redis_url, decode_responses=True)
         await self.redis.ping()
 
     async def close(self) -> None:
