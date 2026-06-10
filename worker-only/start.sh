@@ -17,7 +17,11 @@ x11vnc -display :99 -forever -nopw -rfbport 5900 -noxdamage -shared &
 # Wait for VNC
 sleep 2
 
-# Start nginx
+# Render sets $PORT (default 10000)
+PORT=${PORT:-10000}
+
+# Start nginx on Render's port
+sed -i "s/listen 80;/listen $PORT;/" /etc/nginx/nginx.conf
 nginx &
 
 # Start noVNC (websockify)
