@@ -3,7 +3,7 @@ services:
     name: flowkit-worker
     runtime: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./worker-only/Dockerfile
     healthCheckPath: /health
     autoDeploy: true
     envVars:
