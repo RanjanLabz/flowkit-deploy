@@ -17,6 +17,8 @@
 
 ## Deploy on Render
 
+**Quick link:** Use [`flowkit-render-worker`](https://github.com/RanjanLabz/flowkit-render-worker) repo — has everything pre-packed for Render deployment.
+
 ### Option A: Worker Only
 
 **Use this if:** You already have an orchestrator running elsewhere and just want to add a Render-based worker.
