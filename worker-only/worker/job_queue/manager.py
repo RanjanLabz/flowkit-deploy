@@ -27,17 +27,20 @@ class QueueManager:
         from urllib.parse import urlparse
         parsed = urlparse(self.redis_url)
         use_ssl = self.redis_url.startswith("rediss://")
+        password = parsed.password or ""
+        from urllib.parse import unquote
+        password = unquote(password)
         conn_kwargs = {
             "host": parsed.hostname,
             "port": parsed.port or 6379,
-            "password": parsed.password,
+            "password": password,
             "decode_responses": True,
         }
         if use_ssl:
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
-            conn_kwargs["ssl"] = ctx
+            conn_kwargs["ssl_context"] = ctx
         self.redis = Redis(**conn_kwargs)
         await self.redis.ping()
 
