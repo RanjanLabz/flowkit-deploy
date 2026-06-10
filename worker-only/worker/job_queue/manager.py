@@ -23,6 +23,16 @@ class QueueManager:
     async def connect(self) -> None:
         if not self.redis_url or self.redis_url.startswith("${"):
             raise RuntimeError("REDIS_URL is required for the worker queue")
+        import logging
+        logger = logging.getLogger("redis")
+        logger.setLevel(logging.DEBUG)
+        handler = logging.StreamHandler()
+        handler.setLevel(logging.DEBUG)
+        logger.addHandler(handler)
+        masked_url = self.redis_url[:30] + "..." if len(self.redis_url) > 30 else self.redis_url
+        logger.error(f"REDIS_URL starts with: {self.redis_url[:10]}...")
+        logger.error(f"REDIS_URL length: {len(self.redis_url)}")
+        logger.error(f"REDIS_URL first 50 chars: {self.redis_url[:50]}")
         self.redis = Redis.from_url(self.redis_url, decode_responses=True)
         await self.redis.ping()
 
