@@ -1,0 +1,26 @@
+id: acc-1
+profile_path: C:\fresh project\flowkit-vps-worker\chrome-profiles\acc-1
+proxy_enabled: false
+proxy_url: null
+proxy_health_score: 100
+status: READY
+jobs_running: 0
+last_used: null
+health_score: 100
+failure_count: 0
+success_count: 0
+browser_pid: 13636
+remote_debugging_port: 12001
+display: null
+vnc_port: null
+flowkit_ws_port: 9223
+flowkit_callback_url: http://127.0.0.1:8080/flowkit/acc-1/callback
+extension_runtime_path: C:\fresh project\flowkit-vps-worker\tmp\flow-worker-extensions\acc-1
+created_at: '2026-06-10T10:24:22.525928Z'
+updated_at: '2026-06-10T11:59:58.401808Z'
+settings:
+  flow_url: https://labs.google/fx/tools/flow
+  max_concurrent_jobs: 1
+  cooldown_until: null
+  tags: []
+  metadata: {}

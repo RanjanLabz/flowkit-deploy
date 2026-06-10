@@ -1,0 +1,16 @@
+2026-06-10T15:24:27Z INFO websockets.server server listening on 127.0.0.1:9223
+2026-06-10T15:24:27Z INFO worker.browser.flowkit_bridge FlowKit bridge listening account=acc-1 ws=127.0.0.1:9223
+2026-06-10T15:27:19Z INFO websockets.server server closing
+2026-06-10T15:27:19Z INFO websockets.server server closed
+2026-06-10T15:27:19Z INFO websockets.server server listening on 127.0.0.1:9223
+2026-06-10T15:27:19Z INFO worker.browser.flowkit_bridge FlowKit bridge listening account=acc-1 ws=127.0.0.1:9223
+2026-06-10T15:28:25Z INFO websockets.server server closing
+2026-06-10T15:28:25Z INFO websockets.server server closed
+2026-06-10T15:28:25Z INFO websockets.server server listening on 127.0.0.1:9223
+2026-06-10T15:28:25Z INFO worker.browser.flowkit_bridge FlowKit bridge listening account=acc-1 ws=127.0.0.1:9223
+2026-06-10T16:09:22Z INFO websockets.server server listening on 127.0.0.1:9223
+2026-06-10T16:09:22Z INFO worker.browser.flowkit_bridge FlowKit bridge listening account=acc-1 ws=127.0.0.1:9223
+2026-06-10T17:44:58Z INFO websockets.server server closing
+2026-06-10T17:44:58Z INFO websockets.server server closed
+2026-06-10T17:44:58Z INFO websockets.server server listening on 127.0.0.1:9223
+2026-06-10T17:44:58Z INFO worker.browser.flowkit_bridge FlowKit bridge listening account=acc-1 ws=127.0.0.1:9223

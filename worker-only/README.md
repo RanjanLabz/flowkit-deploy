@@ -2,24 +2,13 @@
 
 ## Quick Deploy
 
-1. Create a new GitHub repo with this structure:
+All files are already in this folder. Just:
 
-```
-your-worker-repo/
-├── render.yaml
-├── Dockerfile
-├── nginx-render.conf
-├── worker/
-├── config/
-├── extension/
-└── requirements.txt
-```
-
-2. Copy files from `flowkit-deploy/worker-only/` into your repo
-3. Also copy `worker/`, `config/`, `extension/`, `requirements.txt` from `flowkit-vps-worker/`
-4. Push to GitHub
-5. render.com → New → Blueprint → select your repo
-6. Set env vars → Deploy
+1. Create a new GitHub repo
+2. Copy everything from `flowkit-deploy/worker-only/` into it
+3. Push to GitHub
+4. render.com → New → Blueprint → select your repo
+5. Set env vars → Deploy
 
 ## Env Vars
 
@@ -27,7 +16,7 @@ your-worker-repo/
 |----------|----------|-------------|
 | `REDIS_URL` | Yes | Redis connection (Upstash free tier works) |
 | `WORKER_API_KEY` | Yes | Shared key with orchestrator |
-| `ORCHESTRATOR_URL` | No | Auto-register on startup |
+| `ORCHESTRATOR_URL` | No | Your orchestrator URL (auto-registers) |
 | `ORCHESTRATOR_API_KEY` | No | For auto-registration |
 | `WORKER_ID` | No | Worker identifier (default: render-worker-1) |
 | `VNC_PASSWORD` | No | VNC viewer password |
