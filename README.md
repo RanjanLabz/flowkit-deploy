@@ -35,14 +35,21 @@ your-worker-repo/
 └── requirements.txt
 ```
 
-Copy `render.yaml`, `Dockerfile`, `nginx-render.conf`, `start.sh` from `flowkit-deploy/worker-only/`.
+Copy `render-free.yaml` or `render-paid.yaml`, `Dockerfile`, `nginx-render.conf`, `start.sh` from `flowkit-deploy/worker-only/`.
 Copy `worker/`, `config/`, `extension/`, `requirements.txt` from `flowkit-vps-worker/`.
 
 **Step 2:** Push to GitHub
 
 **Step 3:** render.com → **New** → **Blueprint** → select your repo
 
-**Step 4:** Set env vars:
+**Step 4:** Set **Blueprint Path** based on your plan:
+
+| Plan | Blueprint Path | Cost |
+|------|---------------|------|
+| Free (spins down after 15 min idle) | `worker-only/render-free.yaml` | $0/month |
+| Paid (always on, no spin-down) | `worker-only/render-paid.yaml` | $25/month |
+
+**Step 5:** Set env vars:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
@@ -53,9 +60,9 @@ Copy `worker/`, `config/`, `extension/`, `requirements.txt` from `flowkit-vps-wo
 | `WORKER_ID` | No | Worker name (default: render-worker-1) |
 | `VNC_PASSWORD` | No | VNC viewer password |
 
-**Step 5:** Deploy
+**Step 6:** Deploy
 
-**Step 6:** Register with your orchestrator:
+**Step 7:** Register with your orchestrator:
 
 ```bash
 curl -X POST https://your-orchestrator.onrender.com/workers \
